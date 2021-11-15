@@ -1,14 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-//property binding as we cant use boolean value in template
-//bind-disabled="isdisabled"    another way of prop binding
+
+//class binding
+//<h2 class="text-success">rahul kandari</h2>
+//<h2 [class]="successClass">rahul kandari</h2>
+//<h2 [class.text-danger]="hasError">rahul kandari</h2>
+//
 @Component({
   selector: 'app-test',
-  template: `<input [disabled]="isdisabled" type="text" value="rahul" />`,
-  styleUrls: ['./test.component.css'],
+  template: `<h2 [ngClass]="messageClasses">rahul kandari</h2>`,
+  styles: [
+    `
+      .text-success {
+        color: green;
+      },
+      .text-danger {
+        color: white;
+      },
+      .text-special {
+        color: blue;
+      }
+    `,
+  ],
 })
 export class TestComponent implements OnInit {
   public name = 'rahul kandari';
-  public isdisabled = false;
+  public successClass = 'text-success';
+  public hasError = true;
+  public isSpecial = false;
+  public messageClasses = {
+    'text-success': !this.hasError,
+    'text-danger': this.hasError,
+    'text-special': this.isSpecial,
+  };
+
   constructor() {}
 
   ngOnInit(): void {}
