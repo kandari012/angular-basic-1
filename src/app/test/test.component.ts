@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
-//style binding
-//<h2 [style.color]="'orange'">rahul kandari</h2>
-//<h2 [style.color]="hasError?'orange':'blue'">rahul kandari</h2>
+//event binding
+//onClick($event)  gives info about the event
 @Component({
   selector: 'app-test',
-  template: `<h2 [ngStyle]="messageStyles">rahul kandari</h2>`,
+  template: `<h2 [ngStyle]="messageStyles">rahul kandari</h2>
+    <button (click)="onClick($event)">greet</button>
+    {{ reet }}`,
   styles: [
     `
       .text-success {
         color: green;
-      },
+      }
+      ,
       .text-danger {
         color: white;
-      },
+      }
+      ,
       .text-special {
         color: blue;
       }
@@ -24,12 +27,11 @@ export class TestComponent implements OnInit {
   public name = 'rahul kandari';
   public successClass = 'text-success';
   public hasError = false;
-  public isSpecial = false;
-  public c="yellow";
+  public reet = '';
+  public c = 'yellow';
   public messageStyles = {
-    color: "red",
-    fontStyle: "italic",
-    
+    color: 'red',
+    fontStyle: 'italic',
   };
 
   constructor() {}
@@ -37,5 +39,9 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {}
   greet() {
     return 'hello Mr. ' + this.name;
+  }
+  onClick(e) {
+    console.log(e);
+    this.reet = 'hello';
   }
 }
