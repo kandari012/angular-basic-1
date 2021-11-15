@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-//interpolation  to bind data from class to template
-//{{2+2}},name.lenght,name.uppercase(),name.greetuser
+//property binding as we cant use boolean value in template
+//bind-disabled="isdisabled"    another way of prop binding
 @Component({
   selector: 'app-test',
-  template: `<h2>{{ greet() }}</h2>`,
+  template: `<input [disabled]="isdisabled" type="text" value="rahul" />`,
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit {
   public name = 'rahul kandari';
+  public isdisabled = false;
   constructor() {}
 
   ngOnInit(): void {}
