@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-//class binding
-//<h2 class="text-success">rahul kandari</h2>
-//<h2 [class]="successClass">rahul kandari</h2>
-//<h2 [class.text-danger]="hasError">rahul kandari</h2>
-//
+//style binding
+//<h2 [style.color]="'orange'">rahul kandari</h2>
+//<h2 [style.color]="hasError?'orange':'blue'">rahul kandari</h2>
 @Component({
   selector: 'app-test',
-  template: `<h2 [ngClass]="messageClasses">rahul kandari</h2>`,
+  template: `<h2 [ngStyle]="messageStyles">rahul kandari</h2>`,
   styles: [
     `
       .text-success {
@@ -25,12 +23,13 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
   public name = 'rahul kandari';
   public successClass = 'text-success';
-  public hasError = true;
+  public hasError = false;
   public isSpecial = false;
-  public messageClasses = {
-    'text-success': !this.hasError,
-    'text-danger': this.hasError,
-    'text-special': this.isSpecial,
+  public c="yellow";
+  public messageStyles = {
+    color: "red",
+    fontStyle: "italic",
+    
   };
 
   constructor() {}
