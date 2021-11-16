@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 //event binding
-//onClick($event)  gives info about the event
+//template reference variable to pass dom(view) info to class
 @Component({
   selector: 'app-test',
   template: `<h2 [ngStyle]="messageStyles">rahul kandari</h2>
-    <button (click)="onClick($event)">greet</button>
+    <input #myInput type="text" />
+    <button (click)="onClick(myInput.value)">greet</button>
     {{ reet }}`,
   styles: [
     `
@@ -40,8 +41,8 @@ export class TestComponent implements OnInit {
   greet() {
     return 'hello Mr. ' + this.name;
   }
-  onClick(e) {
-    console.log(e);
-    this.reet = 'hello';
+  // will take any type of input
+  onClick(value: any) {
+    console.log(value);
   }
 }
