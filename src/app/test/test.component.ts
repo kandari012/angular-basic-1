@@ -1,29 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 //ngFor
-
 
 @Component({
   selector: 'app-test',
   template: `
- 
- <h2>hello {{name}}</h2>
- 
-    `,
-  styles: [
-    
-  ],
+    <h2>hello rk</h2>
+    <button (click)="fireEvent()">click</button>
+  `,
+  styles: [],
 })
 export class TestComponent implements OnInit {
-public colors=['red','blue','green'];
-// to get input from parent
-//@Input() public parentData:any;
-// to alias the input data
-@Input("parentData") public name:any;
+  public colors = ['red', 'blue', 'green'];
+  // create ainstance of emitter class
+  @Output() public childEvent = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
- 
- 
+  fireEvent() {
+    this.childEvent.emit('hey code evolution');
+  }
 }
