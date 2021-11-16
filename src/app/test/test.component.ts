@@ -1,45 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
-//two way binding for form input
-//view to class ,class to view
+//ngIf
+//<h2 *ngIf="displayName; else el" >rahul kandari</h2>
+//<ng-template #el>
+//<h2 >name is hidden</h2>
+//</ng-template >
+
 @Component({
   selector: 'app-test',
-  template: `<h2 >rahul kandari</h2>
-    <input [(ngModel)]="name" type="text" />
-    
-    {{ name }}`,
-  styles: [
-    `
-      .text-success {
-        color: green;
-      }
-      ,
-      .text-danger {
-        color: white;
-      }
-      ,
-      .text-special {
-        color: blue;
-      }
+  template: `
+  <div *ngIf="displayName; then thenBlock;else elseBlock"></div>
+  <ng-template #thenBlock>
+  <h2 >rahul k</h2>
+  </ng-template >
+
+  <ng-template #elseBlock>
+  <h2 >name is hidden</h2>
+  </ng-template >
     `,
+  styles: [
+    
   ],
 })
 export class TestComponent implements OnInit {
-  public name = '';
-  public successClass = 'text-success';
-  public hasError = false;
-  public reet = '';
-  public c = 'yellow';
+public displayName=false;
   
 
   constructor() {}
 
   ngOnInit(): void {}
-  greet() {
-    return 'hello Mr. ' + this.name;
-  }
-  // will take any type of input
-  onClick(value: any) {
-    console.log(value);
-  }
+ 
+ 
 }
