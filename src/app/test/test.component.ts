@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-//event binding
-//template reference variable to pass dom(view) info to class
+//two way binding for form input
+//view to class ,class to view
 @Component({
   selector: 'app-test',
-  template: `<h2 [ngStyle]="messageStyles">rahul kandari</h2>
-    <input #myInput type="text" />
-    <button (click)="onClick(myInput.value)">greet</button>
-    {{ reet }}`,
+  template: `<h2 >rahul kandari</h2>
+    <input [(ngModel)]="name" type="text" />
+    
+    {{ name }}`,
   styles: [
     `
       .text-success {
@@ -25,15 +25,12 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class TestComponent implements OnInit {
-  public name = 'rahul kandari';
+  public name = '';
   public successClass = 'text-success';
   public hasError = false;
   public reet = '';
   public c = 'yellow';
-  public messageStyles = {
-    color: 'red',
-    fontStyle: 'italic',
-  };
+  
 
   constructor() {}
 
