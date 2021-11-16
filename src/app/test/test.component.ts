@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 //ngFor
 
@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
- <div *ngFor="let color of colors; first as f;index as i;last as l;odd as o;even as e">
- <h2>{{i}}{{f}}{{color}}</h2>
- </div>
+ 
+ <h2>hello {{name}}</h2>
+ 
     `,
   styles: [
     
@@ -16,7 +16,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 public colors=['red','blue','green'];
-  
+// to get input from parent
+//@Input() public parentData:any;
+// to alias the input data
+@Input("parentData") public name:any;
 
   constructor() {}
 
