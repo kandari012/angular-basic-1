@@ -6,7 +6,7 @@ import { EmployeeService } from '../employee.service';
 @Component({
   selector: 'app-test',
   template: `
-    <h2 *ngFor="let emp of employee">{{ emp.id}}</h2>
+    <h2 *ngFor="let emp of employee">{{ emp.age}}</h2>
     
   `,
   styles: [],
@@ -18,7 +18,9 @@ export class TestComponent implements OnInit {
   constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit() {
-    
-    this.employee = this._employeeService.getEmployee();
+    // we will use employee service to use getemployee method 
+    // method will return observable to receive data we need to subscribe to it 
+    // after subscibe the emp data comes asyncronously,we assign the data to class property using arrow fxn
+     this._employeeService.getEmployee().subscribe(data=>this.employee=data);
   }
 }
